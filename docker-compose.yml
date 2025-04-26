@@ -1,6 +1,6 @@
 services:
   my-pg:
-    image: postgres
+    image: bitnami/postgresql
     ports:
       - "6001:5432"
     env_file:
