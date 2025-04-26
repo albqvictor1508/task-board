@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.Email;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -25,4 +26,5 @@ public class User {
     private String email;
     @Column(nullable = false, length = 150)
     private String password;
+    private LocalDateTime createdAt; //setar pra auto quando for criado
 }
