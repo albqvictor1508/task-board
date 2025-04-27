@@ -25,7 +25,6 @@ public class UserService {
     }
 
     public User update(User u) {
-         u = userRepo.findById(u.getId()).get();
-        userRepo.u
+        return null;
     }
 }
