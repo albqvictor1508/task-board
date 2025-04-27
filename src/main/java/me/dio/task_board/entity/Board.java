@@ -10,6 +10,14 @@ public class Board {
     private Long id;
     @Column(length = 100, nullable = false)
     private String title;
+    //posso fazer tags
+    @Column(nullable = true)
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "workspace_id")
+    private Workspace workspace;
+    //lista de tasks
 
     public Board(Long id, String title, String description, Workspace workspace) {
         this.id = id;
@@ -52,13 +60,4 @@ public class Board {
     public void setWorkspace(Workspace workspace) {
         this.workspace = workspace;
     }
-
-    //posso fazer tags
-    @Column(nullable = true)
-    private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "workspace_id")
-    private Workspace workspace;
-    //lista de tasks
 }
