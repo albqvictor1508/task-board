@@ -1,19 +1,12 @@
 package me.dio.task_board.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
+@Table(name = "workspaces")
 public class Workspace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,5 +24,46 @@ public class Workspace {
     )
     private Set<User> members = new HashSet<>();
 
-    //no excalidraw do notebook tem mais informações (ou no chat do claude)
+    public Workspace() {
+    }
+
+    public Workspace(Long id, String title, User createdBy, Set<User> members) {
+        this.id = id;
+        this.title = title;
+        this.createdBy = createdBy;
+        this.members = members;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Set<User> getMembers() {
+        return members;
+    }
+
+    public void setMembers(Set<User> members) {
+        this.members = members;
+    }
+//no excalidraw do notebook tem mais informações (ou no chat do claude)
 }

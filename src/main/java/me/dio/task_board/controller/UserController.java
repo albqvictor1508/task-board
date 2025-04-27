@@ -17,7 +17,8 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    public ResponseEntity<?> save(User u) {
+    @PostMapping
+    public ResponseEntity<?> save(@RequestBody User u) {
         if(service.existsById(u.getId())) return ResponseEntity.status(401).body("this user already exists");
         service.save(u);
         Object success = new HashMap<>().put("success", true);
