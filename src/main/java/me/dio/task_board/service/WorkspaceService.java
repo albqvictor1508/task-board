@@ -20,5 +20,7 @@ public class WorkspaceService {
         return workspaceRepo.findAll();
     }
 
-
+    public void deleteWorkspace(Long id) {
+        workspaceRepo.deleteById(id);
+    }
 }
