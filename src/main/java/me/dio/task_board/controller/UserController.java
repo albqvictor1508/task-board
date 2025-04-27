@@ -21,4 +21,8 @@ public class UserController {
     public User updateUser(@RequestBody User u) {
         return service.update(u);
     }
+
+    //delete user
+
+    //find by id
 }

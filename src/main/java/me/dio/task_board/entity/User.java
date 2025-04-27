@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -27,4 +28,6 @@ public class User {
     @Column(nullable = false, length = 150)
     private String password;
     private LocalDateTime createdAt; //setar pra auto quando for criado
+    @ManyToMany(mappedBy = "members")
+    private Set<Workspace> workspaces;
 }
