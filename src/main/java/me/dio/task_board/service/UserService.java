@@ -24,7 +24,12 @@ public class UserService {
         return userRepo.findById(id).get();
     }
 
-    public User update(User u) {
-        return null;
+    public User update(User newUserData) {
+        User u = userRepo.findById(newUserData.getId()).get();
+        u.setName(newUserData.getName());
+        u.setEmail(newUserData.getEmail());
+        u.setPassword(newUserData.getPassword());
+        userRepo.save(u);
+        return u;
     }
 }
