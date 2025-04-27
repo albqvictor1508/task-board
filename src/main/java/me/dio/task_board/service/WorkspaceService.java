@@ -23,4 +23,8 @@ public class WorkspaceService {
     public void deleteWorkspace(Long id) {
         workspaceRepo.deleteById(id);
     }
+
+    public Workspace findById(Long id) {
+        return workspaceRepo.findById(id).get();
+    }
 }
