@@ -5,6 +5,7 @@ import me.dio.task_board.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -13,6 +14,7 @@ public class UserService {
     private UserRepository userRepo;
 
     public void save(User u) {
+        u.setCreatedAt(LocalDateTime.now());
         userRepo.save(u);
     }
 
@@ -31,5 +33,11 @@ public class UserService {
         u.setPassword(newUserData.getPassword());
         userRepo.save(u);
         return u;
+    }
+
+    public void delete(Long id) {}
+
+    public boolean existsById(Long id) {
+        return userRepo.existsById(id);
     }
 }
