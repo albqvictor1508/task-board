@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class WorkspaceService {
@@ -36,10 +37,21 @@ public class WorkspaceService {
         Workspace ws = workspaceRepo.findById(workspaceId).get();
         User u = userRepo.findById(userId).get();
 
-        if(ws.getMembers().contains(u)) {
-            throw new RuntimeException("user is already in workspace");
-        }
-            ws.getMembers().add(u);
-            workspaceRepo.save(ws);
+        if(ws.getMembers().contains(u)) throw new RuntimeException("user is already in workspace");
+        ws.getMembers().add(u);
+        workspaceRepo.save(ws);
+    }
+
+    public void deleteMember(Long workspaceId, Long userId) {
+        Workspace ws = workspaceRepo.findById(workspaceId).get();
+        User u = userRepo.findById(userId).get();
+
+        if(!ws.getMembers().contains(u)) throw new RuntimeException("user not exists in workspace");
+        ws.getMembers().remove(u);
+    }
+
+    public Set<User> getWorkspaceMembers(Long workspaceId) {
+        Workspace workspace = workspaceRepo.findById(workspaceId).get();
+        return workspace.getMembers();
     }
 }
