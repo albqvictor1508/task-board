@@ -2,6 +2,9 @@ package me.dio.task_board.entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "boards")
 public class Board {
@@ -18,7 +21,8 @@ public class Board {
     @JoinColumn(name = "workspace_id")
     private Workspace workspace;
     //lista de tasks
-
+//    @ManyToOne
+//    private Set<Task> tasks = new HashSet<>();
     public Board(Long id, String title, String description, Workspace workspace) {
         this.id = id;
         this.title = title;
