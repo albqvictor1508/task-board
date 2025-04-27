@@ -33,7 +33,13 @@ public class UserController {
         return service.update(u);
     }
 
-    //delete user
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        service.delete(id);
+    }
 
-    //find by id
+    @GetMapping("/{id}")
+    public User findById(@PathVariable Long id) {
+        return service.findById(id);
+    }
 }
